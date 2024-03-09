@@ -1,0 +1,77 @@
+
+/* The .btn:link and .btn:visited selectors target buttons in their default and visited states respectively */
+.btn {
+    /* Converts text to uppercase */
+    text-transform: uppercase;
+    /* Removes any text decoration like underline */
+    text-decoration: none;
+
+    /* Makes the element inline-block */
+    display: inline-block;
+    /* Adds padding of 15px top and bottom, 40px left and right */
+    padding: 1.5rem 4rem;
+    /* Makes the corners of the button rounded */
+    border-radius: 10rem;
+    /* Adds a transition effect for all properties in 0.2s */
+    transition: all 0.2s;
+
+    position: relative;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+
+    }
+
+    &:active {
+        // Moves the button 1px upwards
+        transform: translateY(-1px);
+        // Adds a smaller shadow below the button
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            border: 2px solid white;
+        }
+    }
+
+    &--animated {
+        // Applies the animation named moveInBottom. The animation takes 0.5s, starts after 0.75s and eases out
+        animation: moveInBottom 0.5s ease-out 0.75s;
+        // The animation will apply the styles of the first keyframe before it starts and retain the styles of the last keyframe after it ends
+        animation-fill-mode: backwards;
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+
+        /*
+        Above, we have applied the following styles:
+
+        .btn {
+            position: relative;
+        }
+
+        Therefore, we now want to position the ::after pseudoelement relative to the .btn element.
+        */
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+}

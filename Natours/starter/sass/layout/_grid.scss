@@ -1,0 +1,75 @@
+/**
+ * FILEPATH: /workspaces/advanced-css-course/Natours/starter/sass/layout/_grid.scss
+ * 
+ * This file contains the styles for the grid layout of the Natours website.
+ * It defines the classes for rows and columns, as well as their widths and margins.
+ * The grid system is based on a 12-column layout, with responsive classes for different screen sizes.
+ */
+.row {
+    max-width: $grid-width;
+    margin: 0 auto;
+    color: white;
+
+    // Apply styles to all children except the last one
+    &:not(:last-child) {
+        // Add a bottom margin to all elements except the last child
+        margin-bottom: $gutter-vertical;
+    }
+
+    // Include the clearfix mixin to clear floats
+    @include clearfix;
+
+    // Select all classes that start with "col-"
+    [class^="col-"] {
+        // Make the element float to the left
+        float: left;
+        background-color: orangered;
+
+        // Apply styles to all children except the last one
+        &:not(:last-child) {
+            // Add a right margin to all elements except the last child
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    // Define styles for the class .col-1-of-2
+    .col-1-of-2 {
+        // Set the width to half of the container width minus the gutter
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+        // Set the background color to orangered
+        background-color: orangered;
+        // Make the element float to the left
+        float: left;
+    }
+
+    // Define styles for the class .col-1-of-3
+    .col-1-of-3 {
+        // Set the width to one third of the container width minus the gutter
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+    }
+
+    // Define styles for the class .col-2-of-3
+    .col-2-of-3 {
+        // Set the width to two thirds of the container width plus the gutter
+        width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+    }
+
+    // Define styles for the class .col-1-of-4
+    .col-1-of-4 {
+        // Set the width to one fourth of the container width minus the gutter
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+    }
+
+    // Define styles for the class .col-2-of-4
+    .col-2-of-4 {
+        // Set the width to half of the container width plus the gutter
+        width: calc(2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
+    }
+
+    // Define styles for the class .col-3-of-4
+    .col-3-of-4 {
+        // Set the width to three fourths of the container width plus twice the gutter
+        width: calc(3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal});
+    }
+
+}
