@@ -1,5 +1,8 @@
-
-
+/**
+ * This mixin provides a clearfix solution by adding a pseudo-element (::after) to the parent element.
+ * The pseudo-element has the 'clear' property set to 'both' to clear any floated child elements.
+ * The 'display' property is set to 'table' to create a new block formatting context.
+ */
 @mixin clearfix {
     &::after {
         content: "";

@@ -8,7 +8,6 @@
 .row {
     max-width: $grid-width;
     margin: 0 auto;
-    color: white;
 
     // Apply styles to all children except the last one
     &:not(:last-child) {
@@ -23,7 +22,6 @@
     [class^="col-"] {
         // Make the element float to the left
         float: left;
-        background-color: orangered;
 
         // Apply styles to all children except the last one
         &:not(:last-child) {
@@ -32,12 +30,30 @@
         }
     }
 
+    /* 
+        The general formula is as follows:
+
+        - For the first column in a row:
+
+        .col-1-of-y {
+            width: calc((100% - (y - 1) * gutter) / y);
+        }
+
+        where y is the number of columns in the row and gutter is the horizontal gutter width.
+
+        - For all other columns in a row:
+
+        .col-x-of-y {
+            width: calc(x * ((100% - (y - 1) * gutter) / y) + gutter);
+        }
+
+        where x is the column number and y is the number of columns in the row.
+    */
+
     // Define styles for the class .col-1-of-2
     .col-1-of-2 {
         // Set the width to half of the container width minus the gutter
         width: calc((100% - #{$gutter-horizontal}) / 2);
-        // Set the background color to orangered
-        background-color: orangered;
         // Make the element float to the left
         float: left;
     }
